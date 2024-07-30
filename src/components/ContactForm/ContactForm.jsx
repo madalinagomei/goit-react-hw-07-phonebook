@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
-import { addContact } from '../../redux/contactSlice';
+import { addContact } from '../../redux/operations';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const ContactForm = () => {
     const newContact = {
       id: nanoid(),
       name: e.target.elements.name.value,
-      number: e.target.elements.number.value,
+      phone: e.target.elements.phone.value,
     };
     dispatch(addContact(newContact));
     e.target.reset();
@@ -32,7 +32,7 @@ const ContactForm = () => {
       <h3>Number</h3>
       <input
         type="tel"
-        name="number"
+        name="phone"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
         pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
